@@ -7,9 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         <div className="col-span-1 md:col-span-1">
           <Link to="/" className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
-              K
-            </div>
+            <img src="/logo.png" alt="Kaytee's Logo" className="w-10 h-10 object-contain brightness-0 invert" />
             <span className="font-serif text-2xl font-bold text-white">Kaytee's</span>
           </Link>
           <p className="text-sm leading-relaxed mb-6">

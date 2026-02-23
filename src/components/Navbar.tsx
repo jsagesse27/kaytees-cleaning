@@ -33,9 +33,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">
-            K
-          </div>
+          <img src="/logo.png" alt="Kaytee's Logo" className="w-12 h-12 object-contain" />
           <span className={cn(
             "font-serif text-2xl font-bold tracking-tight",
             isScrolled ? "text-slate-900" : "text-white"
