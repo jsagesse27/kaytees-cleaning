@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SERVICES } from '../constants';
-import { CheckCircle2, Calendar, Clock, User, Mail, Phone, MapPin, Sparkles } from 'lucide-react';
+import { CheckCircle2, Calendar, Clock, User, Mail, Phone, MapPin, Sparkles, Shield } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export default function Booking() {
@@ -31,8 +31,8 @@ export default function Booking() {
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Book Your Clean</h1>
-          <p className="text-slate-600">Complete the form below to schedule your professional cleaning service.</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Request a Quote</h1>
+          <p className="text-slate-600">Complete the form below to schedule your professional cleaning, commercial or residential.</p>
         </div>
 
         {/* Progress Bar */}
@@ -113,12 +113,13 @@ export default function Booking() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Full Name</label>
+                  <label htmlFor="fullName" className="text-sm font-bold text-slate-700">Full Name</label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      id="fullName"
                       type="text"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -126,25 +127,28 @@ export default function Booking() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Email Address</label>
+                  <label htmlFor="email" className="text-sm font-bold text-slate-700">Email Address</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      id="email"
                       type="email"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       placeholder="john@example.com"
+
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Phone Number</label>
+                  <label htmlFor="phone" className="text-sm font-bold text-slate-700">Phone Number</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      id="phone"
                       type="tel"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       placeholder="(555) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -152,12 +156,13 @@ export default function Booking() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Service Address</label>
+                  <label htmlFor="address" className="text-sm font-bold text-slate-700">Service Address</label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      id="address"
                       type="text"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       placeholder="123 Main St, City, ST"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -192,23 +197,25 @@ export default function Booking() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Preferred Date</label>
+                  <label htmlFor="prefDate" className="text-sm font-bold text-slate-700">Preferred Date</label>
                   <div className="relative">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      id="prefDate"
                       type="date"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       value={formData.date}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">Preferred Time</label>
+                  <label htmlFor="prefTime" className="text-sm font-bold text-slate-700">Preferred Time</label>
                   <div className="relative">
                     <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <select
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none appearance-none"
+                      id="prefTime"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none appearance-none focus-visible:ring-2 focus-visible:ring-brand-primary"
                       value={formData.time}
                       onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     >
@@ -298,5 +305,3 @@ export default function Booking() {
     </motion.div>
   );
 }
-
-import { Shield } from 'lucide-react';

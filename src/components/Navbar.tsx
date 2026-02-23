@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Calendar } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +21,13 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/#services' },
     { name: 'Testimonials', href: '/#testimonials' },
-    { name: 'About', href: '/#about' },
+    { name: 'About', href: '/about' },
   ];
 
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
+        'fixed top-4 left-4 right-4 z-50 transition-all duration-300 px-6 py-4 rounded-2xl',
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent'
       )}
     >
@@ -38,7 +38,7 @@ export default function Navbar() {
             "font-serif text-2xl font-bold tracking-tight",
             isScrolled ? "text-slate-900" : "text-white"
           )}>
-            Kaytee's
+            Kaytee's Cleaning Service
           </span>
         </Link>
 
@@ -69,6 +69,9 @@ export default function Navbar() {
         <button
           className={cn("md:hidden p-2", isScrolled ? "text-slate-900" : "text-white")}
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label="Toggle Navigation"
         >
           {isOpen ? <X /> : <Menu />}
         </button>
@@ -107,5 +110,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-import { AnimatePresence } from 'motion/react';

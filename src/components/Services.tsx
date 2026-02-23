@@ -9,13 +9,13 @@ export default function Pricing() {
     <section id="services" className="py-24 px-6 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-brand-primary font-bold tracking-widest uppercase text-sm mb-4">Pricing Plans</h2>
+          <h2 className="text-brand-primary font-bold tracking-widest uppercase text-sm mb-4">Service Plans</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Simple, Transparent <br />
-            <span className="text-brand-accent italic">Recurring Services</span>
+            <span className="text-brand-accent italic">Service Plans</span>
           </h3>
           <p className="text-lg text-slate-600">
-            Choose a plan that fits your lifestyle. No hidden fees, no long-term contracts. Just a clean home, guaranteed.
+            Choose a plan that fits your business or home. No hidden fees, no long-term contracts. Just a clean space, guaranteed.
           </p>
         </div>
 
@@ -28,10 +28,10 @@ export default function Pricing() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={cn(
-                "relative p-8 rounded-[2.5rem] flex flex-col transition-all duration-500",
-                plan.popular 
-                  ? "bg-brand-primary text-white shadow-2xl shadow-brand-primary/30 scale-105 z-10" 
-                  : "bg-white text-slate-900 border border-slate-100 hover:shadow-xl"
+                "relative p-8 rounded-[2.5rem] flex flex-col transition-all duration-300 cursor-pointer group hover:-translate-y-2",
+                plan.popular
+                  ? "bg-brand-primary text-white shadow-2xl shadow-brand-primary/30 scale-105 z-10 hover:shadow-brand-primary/50"
+                  : "bg-white text-slate-900 border border-slate-100 hover:shadow-2xl hover:border-brand-primary/20"
               )}
             >
               {plan.popular && (
@@ -70,8 +70,8 @@ export default function Pricing() {
                 to="/book"
                 className={cn(
                   "w-full py-4 rounded-2xl font-bold text-center transition-all flex items-center justify-center gap-2 group",
-                  plan.popular 
-                    ? "bg-white text-brand-primary hover:bg-slate-100" 
+                  plan.popular
+                    ? "bg-white text-brand-primary hover:bg-slate-100"
                     : "bg-brand-primary text-white hover:bg-brand-secondary"
                 )}
               >

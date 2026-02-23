@@ -8,28 +8,34 @@ export interface Service {
   features: string[];
 }
 
+export const CONTACT = {
+  phone: '(555) 123-4567',
+  email: 'hello@kayteescleaning.com',
+  address: '123 Sparkle Way, Clean City, ST 12345'
+};
+
 export const RECURRING_PLANS = [
   {
     id: 'weekly',
-    name: 'Weekly Sparkle',
-    price: '99',
-    description: 'Perfect for busy families who want a consistently pristine home.',
-    features: ['Priority Scheduling', 'Dedicated Cleaner', 'Eco-Friendly Supplies', '15% Savings Included'],
+    name: 'Weekly Maintenance',
+    price: '199',
+    description: 'Perfect for high-traffic offices and retail spaces that need consistent daily upkeep.',
+    features: ['Priority Scheduling', 'Dedicated Crew', 'Eco-Friendly Supplies', '15% Savings Included'],
     popular: false
   },
   {
     id: 'bi-weekly',
-    name: 'Bi-Weekly Fresh',
-    price: '129',
-    description: 'Our most popular choice for maintaining a healthy, clean balance.',
-    features: ['Flexible Rescheduling', 'Deep Kitchen Clean', 'Bathroom Sanitization', '10% Savings Included'],
+    name: 'Bi-Weekly Professional',
+    price: '299',
+    description: 'Our most popular plan for businesses that want a reliably clean environment.',
+    features: ['Flexible Rescheduling', 'Deep Break Room Clean', 'Restroom Sanitization', '10% Savings Included'],
     popular: true
   },
   {
     id: 'monthly',
-    name: 'Monthly Deep',
-    price: '189',
-    description: 'A thorough monthly refresh to keep the big stuff under control.',
+    name: 'Monthly Deep Service',
+    price: '499',
+    description: 'A comprehensive monthly deep clean to keep your facility in top condition.',
     features: ['Full Dusting', 'Floor Polishing', 'Window Tracks', 'Baseboard Detail'],
     popular: false
   }
@@ -37,60 +43,63 @@ export const RECURRING_PLANS = [
 
 export const SERVICES: Service[] = [
   {
-    id: 'residential',
-    title: 'Residential Cleaning',
-    description: 'Meticulous cleaning for your home, tailored to your lifestyle.',
-    longDescription: 'Our residential cleaning service is designed to give you back your time. We cover everything from dusting and vacuuming to deep cleaning kitchens and bathrooms. Whether you need a weekly touch-up or a monthly deep clean, Kaytee\'s team ensures your sanctuary remains spotless.',
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=800',
-    price: 'From $120',
-    features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean']
-  },
-  {
     id: 'commercial',
     title: 'Commercial Cleaning',
-    description: 'Professional cleaning solutions for offices and retail spaces.',
-    longDescription: 'A clean workspace is a productive workspace. We provide comprehensive commercial cleaning services for offices, retail stores, and medical facilities. Our team works around your schedule to ensure minimal disruption to your business operations.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+    description: 'We keep offices, retail spaces, and corporate buildings looking their best, day after day.',
+    longDescription: 'A clean workspace is a productive workspace. We provide comprehensive commercial cleaning services for offices, retail stores, and corporate facilities. Our team works around your schedule to make sure there is zero disruption to your business.',
+    image: '/service-commercial.png',
     price: 'Custom Quote',
     features: ['Office Sanitization', 'Floor Maintenance', 'Window Cleaning', 'Waste Management']
   },
   {
+    id: 'facility',
+    title: 'Facility Maintenance',
+    description: 'Full-service upkeep for warehouses, gyms, medical offices, and large venues.',
+    longDescription: 'From warehouses to convention centers, our facility maintenance crews handle the heavy-duty cleaning your large spaces demand. We bring industrial-grade equipment and trained personnel to keep everything running smoothly.',
+    image: '/service-facility.png',
+    price: 'Custom Quote',
+    features: ['Industrial Floor Care', 'High-Ceiling Dusting', 'Loading Area Wash', 'Restroom Deep Clean']
+  },
+  {
     id: 'deep-clean',
     title: 'Deep Cleaning',
-    description: 'A thorough, top-to-bottom refresh for neglected spaces.',
-    longDescription: 'Our deep cleaning service goes beyond the surface. We target the areas that are often missed during regular cleanings, including baseboards, inside appliances, and behind furniture. Perfect for spring cleaning or preparing for a special event.',
-    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80&w=800',
+    description: 'A top-to-bottom scrub for offices, lobbies, kitchens, and common areas that need extra attention.',
+    longDescription: 'Our deep cleaning service goes well beyond the surface. We target spots that regular cleanings miss: behind equipment, inside break rooms, ventilation grilles, and high-touch surfaces. Best for seasonal refreshes or pre-inspection prep.',
+    image: '/service-deepclean.png',
     price: 'From $250',
     features: ['Inside Appliances', 'Baseboard Scrubbing', 'Wall Washing', 'Grout Cleaning']
   },
   {
-    id: 'move-in-out',
-    title: 'Move In/Out Cleaning',
-    description: 'Seamless transitions with a perfectly clean new start.',
-    longDescription: 'Moving is stressful enough without having to worry about cleaning. Our move-in/out service ensures that your old place is ready for its next occupants or that your new home is pristine and welcoming from day one.',
-    image: 'https://images.unsplash.com/photo-1603712726238-2fd57bddf182?auto=format&fit=crop&q=80&w=800',
-    price: 'From $300',
-    features: ['Cabinet Sanitization', 'Closet Cleaning', 'Full House Disinfection', 'Window Tracks']
+    id: 'residential',
+    title: 'Residential Cleaning',
+    description: 'Careful, detail-oriented cleaning for your home, built around your schedule and preferences.',
+    longDescription: 'Our residential cleaning service gives you back your free time. We handle everything from dusting and vacuuming to deep cleaning kitchens and bathrooms. Whether you need a weekly visit or a monthly refresh, our team keeps your home spotless.',
+    image: '/service-residential.png',
+    price: 'From $120',
+    features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean']
   }
 ];
 
 export const TESTIMONIALS = [
   {
-    name: 'Sarah Johnson',
-    role: 'Homeowner',
-    content: 'Kaytee\'s team is incredible. I\'ve tried several services, but none match their attention to detail. My house has never felt cleaner!',
-    rating: 5
+    name: 'David Park',
+    role: 'Office Manager, TechVault Inc.',
+    content: 'Kaytee\'s team keeps our 3-floor office spotless. They work around our schedule and the crew is always professional. Best commercial cleaners we\'ve ever had.',
+    rating: 5,
+    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150'
   },
   {
-    name: 'Michael Chen',
-    role: 'Office Manager',
-    content: 'Reliable, professional, and thorough. They transformed our office environment. Highly recommend for any business owner.',
-    rating: 5
+    name: 'Lisa Romero',
+    role: 'Facility Director, GreenField Mall',
+    content: 'We switched to Kaytee\'s for our entire facility and haven\'t looked back. The deep cleaning quality is unmatched, and they handle everything from restrooms to food courts.',
+    rating: 5,
+    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'
   },
   {
-    name: 'Emily Davis',
-    role: 'Real Estate Agent',
-    content: 'I use Kaytee\'s for all my move-out cleanings. They help my listings shine and always show up on time.',
-    rating: 5
+    name: 'James Whitfield',
+    role: 'Property Manager',
+    content: 'I manage 12 commercial properties and Kaytee\'s handles cleaning for all of them. Consistent, reliable, and their pricing is transparent. Highly recommend.',
+    rating: 5,
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'
   }
 ];
