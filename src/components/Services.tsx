@@ -28,7 +28,7 @@ export default function Pricing() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={cn(
-                "relative p-8 rounded-[2.5rem] flex flex-col transition-all duration-300 cursor-pointer group hover:-translate-y-2",
+                "relative p-8 rounded-[2.5rem] flex flex-col transition-all duration-200 cursor-pointer group hover:-translate-y-2",
                 plan.popular
                   ? "bg-brand-primary text-white shadow-2xl shadow-brand-primary/30 scale-105 z-10 hover:shadow-brand-primary/50"
                   : "bg-white text-slate-900 border border-slate-100 hover:shadow-2xl hover:border-brand-primary/20"

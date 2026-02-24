@@ -49,6 +49,16 @@ function FlyToLocation({ position }: { position: [number, number] | null }) {
   return null;
 }
 
+function getBoroughCenter(zip: string): [number, number] {
+  const num = parseInt(zip, 10);
+  if (num >= 10001 && num <= 10282) return [40.7831, -73.9712]; // Manhattan
+  if (num >= 10451 && num <= 10475) return [40.8448, -73.8648]; // Bronx
+  if (num >= 11201 && num <= 11256) return [40.6782, -73.9442]; // Brooklyn
+  if ((num >= 11004 && num <= 11109) || (num >= 11351 && num <= 11697)) return [40.7282, -73.7949]; // Queens
+  if (num >= 10301 && num <= 10314) return [40.5795, -74.1502]; // Staten Island
+  return [40.7128, -74.006]; // Default City Hall
+}
+
 // NYC borough service areas with approximate coordinates
 const SERVICE_AREAS = [
   { name: 'Manhattan', center: [40.7831, -73.9712] as [number, number], radius: 3500, color: '#1B6B4A' },
@@ -72,16 +82,24 @@ export default function CoverageMap() {
 
     if (isNYCZip(cleanZip)) {
       setResult('success');
-      // Use Nominatim to geocode the zip
+      // Use Nominatim to geocode the zip with a safe fallback
       try {
-        const resp = await fetch(`https://nominatim.openstreetmap.org/search?postalcode=${cleanZip}&country=US&format=json&limit=1`);
+        const resp = await fetch(`https://nominatim.openstreetmap.org/search?postalcode=${cleanZip}&country=US&format=json&limit=1`, {
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Kaytee-Cleaning-Map-App'
+          }
+        });
+        if (!resp.ok) throw new Error('Fetch failed');
         const data = await resp.json();
-        if (data.length > 0) {
+        if (data && data.length > 0) {
           setMarkerPos([parseFloat(data[0].lat), parseFloat(data[0].lon)]);
+        } else {
+          setMarkerPos(getBoroughCenter(cleanZip));
         }
       } catch {
-        // Fallback to NYC center
-        setMarkerPos([40.7128, -74.006]);
+        // Fallback to the exact borough center to avoid Manhattan default
+        setMarkerPos(getBoroughCenter(cleanZip));
       }
     } else {
       setResult('outside');

@@ -45,8 +45,8 @@ export const SERVICES: Service[] = [
   {
     id: 'commercial',
     title: 'Commercial Cleaning',
-    description: 'We keep offices, retail spaces, and corporate buildings looking their best, day after day.',
-    longDescription: 'A clean workspace is a productive workspace. We provide comprehensive commercial cleaning services for offices, retail stores, and corporate facilities. Our team works around your schedule to make sure there is zero disruption to your business.',
+    description: 'Boost employee productivity and impress your clients with an immaculate workspace.',
+    longDescription: 'A clean workspace translates directly to higher productivity and better first impressions. We provide reliable commercial cleaning services that work around your schedule to ensure zero disruption. Keep your team healthy and focused on what matters most.',
     image: '/service-commercial.png',
     price: 'Custom Quote',
     features: ['Office Sanitization', 'Floor Maintenance', 'Window Cleaning', 'Waste Management']
@@ -54,8 +54,8 @@ export const SERVICES: Service[] = [
   {
     id: 'facility',
     title: 'Facility Maintenance',
-    description: 'Full-service upkeep for warehouses, gyms, medical offices, and large venues.',
-    longDescription: 'From warehouses to convention centers, our facility maintenance crews handle the heavy-duty cleaning your large spaces demand. We bring industrial-grade equipment and trained personnel to keep everything running smoothly.',
+    description: 'Ensure safety and compliance while extending the lifespan of your physical assets.',
+    longDescription: 'Large spaces require specialized expertise. Our facility maintenance crews handle the heavy-duty cleaning your warehouse, gym, or medical office demands. Reduce liability and create a safer environment with our trained personnel and industrial-grade equipment.',
     image: '/service-facility.png',
     price: 'Custom Quote',
     features: ['Industrial Floor Care', 'High-Ceiling Dusting', 'Loading Area Wash', 'Restroom Deep Clean']
@@ -63,8 +63,8 @@ export const SERVICES: Service[] = [
   {
     id: 'deep-clean',
     title: 'Deep Cleaning',
-    description: 'A top-to-bottom scrub for offices, lobbies, kitchens, and common areas that need extra attention.',
-    longDescription: 'Our deep cleaning service goes well beyond the surface. We target spots that regular cleanings miss: behind equipment, inside break rooms, ventilation grilles, and high-touch surfaces. Best for seasonal refreshes or pre-inspection prep.',
+    description: 'Hit the reset button on your space. Perfect for seasonal cleaning or moving into a new location.',
+    longDescription: 'Our deep cleaning service targets the hidden grime that regular cleanings miss, completely resetting your environment. We tackle high-touch surfaces, behind equipment, and inside vents so you can enjoy absolute peace of mind and the healthiest possible space.',
     image: '/service-deepclean.png',
     price: 'From $250',
     features: ['Inside Appliances', 'Baseboard Scrubbing', 'Wall Washing', 'Grout Cleaning']
@@ -72,8 +72,8 @@ export const SERVICES: Service[] = [
   {
     id: 'residential',
     title: 'Residential Cleaning',
-    description: 'Careful, detail-oriented cleaning for your home, built around your schedule and preferences.',
-    longDescription: 'Our residential cleaning service gives you back your free time. We handle everything from dusting and vacuuming to deep cleaning kitchens and bathrooms. Whether you need a weekly visit or a monthly refresh, our team keeps your home spotless.',
+    description: 'Reclaim your weekends and return to a sanctuary that feels as good as it looks.',
+    longDescription: 'Your time is your most valuable asset. Stop spending hours scrubbing and dusting. Our residential cleaning service gives you back your free time to spend with family or relaxing. Walk into a spotless, fresh-smelling home without lifting a finger.',
     image: '/service-residential.png',
     price: 'From $120',
     features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean']
@@ -84,21 +84,21 @@ export const TESTIMONIALS = [
   {
     name: 'David Park',
     role: 'Office Manager, TechVault Inc.',
-    content: 'Kaytee\'s team keeps our 3-floor office spotless. They work around our schedule and the crew is always professional. Best commercial cleaners we\'ve ever had.',
+    content: 'Since hiring Kaytee\'s, employee complaints about the restrooms and break room have completely stopped. It saves me hours of headache every week.',
     rating: 5,
     photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150'
   },
   {
     name: 'Lisa Romero',
     role: 'Facility Director, GreenField Mall',
-    content: 'We switched to Kaytee\'s for our entire facility and haven\'t looked back. The deep cleaning quality is unmatched, and they handle everything from restrooms to food courts.',
+    content: 'Kaytee\'s gives me absolute peace of mind. I never have to micro-manage them or worry about missed spots before a big inspection. Truly a set-and-forget service.',
     rating: 5,
     photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'
   },
   {
     name: 'James Whitfield',
     role: 'Property Manager',
-    content: 'I manage 12 commercial properties and Kaytee\'s handles cleaning for all of them. Consistent, reliable, and their pricing is transparent. Highly recommend.',
+    content: 'Their 100% satisfaction guarantee isn\'t just a marketing line. They deliver reliable, consistent results every single time. It completely changed how we manage our properties.',
     rating: 5,
     photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'
   }

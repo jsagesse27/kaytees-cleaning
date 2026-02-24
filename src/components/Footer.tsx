@@ -15,29 +15,29 @@ export default function Footer() {
             Premium cleaning services for offices, facilities, and homes. We deliver spotless results and total peace of mind, commercial or residential.
           </p>
           <div className="flex gap-4">
-            <a href="#" aria-label="Facebook" className="hover:text-brand-accent transition-colors"><Facebook className="w-5 h-5" /></a>
-            <a href="#" aria-label="Instagram" className="hover:text-brand-accent transition-colors"><Instagram className="w-5 h-5" /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-brand-accent transition-colors"><Twitter className="w-5 h-5" /></a>
+            <a href="#" aria-label="Facebook" className="hover:text-brand-accent transition-colors cursor-pointer"><Facebook className="w-5 h-5" /></a>
+            <a href="#" aria-label="Instagram" className="hover:text-brand-accent transition-colors cursor-pointer"><Instagram className="w-5 h-5" /></a>
+            <a href="#" aria-label="Twitter" className="hover:text-brand-accent transition-colors cursor-pointer"><Twitter className="w-5 h-5" /></a>
           </div>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6">Quick Links</h4>
           <ul className="space-y-4 text-sm">
-            <li><a href="/#services" className="hover:text-white transition-colors">Our Services</a></li>
-            <li><a href="/#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
-            <li><a href="/#about" className="hover:text-white transition-colors">About Us</a></li>
-            <li><Link to="/book" className="hover:text-white transition-colors">Book a Clean</Link></li>
+            <li><a href="/#services" className="hover:text-white transition-colors cursor-pointer">Our Services</a></li>
+            <li><a href="/#testimonials" className="hover:text-white transition-colors cursor-pointer">Testimonials</a></li>
+            <li><a href="/#about" className="hover:text-white transition-colors cursor-pointer">About Us</a></li>
+            <li><Link to="/book" className="hover:text-white transition-colors cursor-pointer">Book a Clean</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-bold mb-6">Services</h4>
           <ul className="space-y-4 text-sm">
-            <li><Link to="/services/commercial" className="hover:text-white transition-colors">Commercial Cleaning</Link></li>
-            <li><Link to="/services/facility" className="hover:text-white transition-colors">Facility Maintenance</Link></li>
-            <li><Link to="/services/deep-clean" className="hover:text-white transition-colors">Deep Cleaning</Link></li>
-            <li><Link to="/services/residential" className="hover:text-white transition-colors">Residential Cleaning</Link></li>
+            <li><Link to="/services/commercial" className="hover:text-white transition-colors cursor-pointer">Commercial Cleaning</Link></li>
+            <li><Link to="/services/facility" className="hover:text-white transition-colors cursor-pointer">Facility Maintenance</Link></li>
+            <li><Link to="/services/deep-clean" className="hover:text-white transition-colors cursor-pointer">Deep Cleaning</Link></li>
+            <li><Link to="/services/residential" className="hover:text-white transition-colors cursor-pointer">Residential Cleaning</Link></li>
           </ul>
         </div>
 
@@ -63,8 +63,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto pt-8 border-t border-brand-primary/20 flex flex-col sm:grid-cols-2 md:flex-row justify-between items-center gap-4 text-xs">
         <p>© {new Date().getFullYear()} Kaytee's Cleaning Service. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-white">Privacy Policy</a>
-          <a href="#" className="hover:text-white">Terms of Service</a>
+          <a href="#" className="hover:text-white cursor-pointer">Privacy Policy</a>
+          <a href="#" className="hover:text-white cursor-pointer">Terms of Service</a>
         </div>
       </div>
     </footer>

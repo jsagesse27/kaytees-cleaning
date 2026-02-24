@@ -49,7 +49,7 @@ export default function Navbar() {
               key={link.name}
               to={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand-accent",
+                "text-sm font-medium transition-colors hover:text-brand-accent focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-sm",
                 isScrolled ? "text-slate-600" : "text-white/90"
               )}
             >
@@ -84,14 +84,14 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-xl p-6 md:hidden flex flex-col gap-4"
+            className="absolute top-full left-0 right-0 bg-white shadow-xl p-6 md:hidden flex flex-col gap-4 border border-slate-200"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-slate-900 hover:text-brand-primary"
+                className="text-lg font-medium text-slate-900 hover:text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-sm inline-block"
               >
                 {link.name}
               </Link>

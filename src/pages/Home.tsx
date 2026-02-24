@@ -6,6 +6,7 @@ import QuoteCalculator from '../components/QuoteCalculator';
 import CoverageMap from '../components/CoverageMap';
 import Testimonials from '../components/Testimonials';
 import BookingCTA from '../components/BookingCTA';
+import TrustBadges from '../components/TrustBadges';
 import AboutSection from '../components/AboutSection';
 import { Shield, Sparkles, Heart, Zap, Award, ThumbsUp, Leaf, Clock8 } from 'lucide-react';
 
@@ -27,6 +28,7 @@ export default function Home() {
       className="pt-0"
     >
       <Hero />
+      <TrustBadges />
 
       {/* Problem Statement */}
       <section className="py-24 px-6 bg-brand-bg text-center">
@@ -37,11 +39,11 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-              Your space deserves care that <span className="text-brand-primary">reflects your standards.</span>
+              Stop letting a messy space <span className="text-brand-primary">cost you Time and Peace of Mind.</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-600 mb-10">
-              Whether it's your office, storefront, or home, a clean environment isn't just about appearances. It's about health, confidence, and peace of mind.
-              Let our professional team handle the cleaning so you can focus on what truly matters.
+              Whether it's an office that fails to impress clients, or a home that feels like a second job, dirt and clutter drain your energy.
+              It's time to hand the scrubbing over to the professionals. We deliver meticulous, reliable cleaning so you can finally relax and focus on what truly matters.
             </p>
           </motion.div>
         </div>
@@ -54,6 +56,10 @@ export default function Home() {
             {features.map((f, i) => (
               <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
                 className="flex flex-col items-center text-center p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand-primary/20 group cursor-pointer"
               >
                 <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
@@ -67,10 +73,10 @@ export default function Home() {
         </div>
       </section>
 
+      <Testimonials />
       <ServicesGrid />
       <Pricing />
       <QuoteCalculator />
-      <Testimonials />
       <AboutSection />
       <CoverageMap />
       <BookingCTA />

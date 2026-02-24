@@ -37,12 +37,12 @@ export default function Hero() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8">
-            A Spotless Space, <br />
-            <span className="text-brand-accent italic">Every Single Day.</span>
+            The Clean You Expect. <br />
+            <span className="text-brand-accent italic">The Reliability You Deserve.</span>
           </h1>
 
           <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
-            Premium commercial and residential cleaning trusted by 500+ clients across New York City. Offices, retail spaces, and homes. We keep every space immaculate.
+            Stop stressing about the mess. Get premium, fully-insured commercial and residential cleaning in NYC. Reclaim your time and space with our 100% Satisfaction Guarantee.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -103,15 +103,15 @@ export default function Hero() {
 
           {/* Decorative Sparkle Elements */}
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            animate={{ y: [-5, 5, -5] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-4 right-8 z-20"
           >
             <Sparkles className="w-8 h-8 text-brand-accent drop-shadow-lg" />
           </motion.div>
           <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            animate={{ y: [5, -5, 5] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-16 left-0 z-20"
           >
             <Sparkles className="w-6 h-6 text-brand-accent/70 drop-shadow-lg" />

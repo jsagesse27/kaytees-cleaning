@@ -380,6 +380,10 @@ export default function QuoteCalculator() {
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
+                    <div className="mt-4 flex items-center justify-center gap-2 text-brand-accent/90 text-sm font-bold bg-brand-accent/10 py-2 px-4 rounded-full w-fit mx-auto border border-brand-accent/20">
+                      <CheckCircle2 className="w-4 h-4" />
+                      100% Satisfaction Guarantee
+                    </div>
                     <p className="mt-3 text-[10px] text-slate-500 italic text-center">
                       *Final price may vary based on specific conditions and requirements.
                     </p>
@@ -526,6 +530,10 @@ export default function QuoteCalculator() {
                         Confirm Booking
                         <CheckCircle2 className="w-5 h-5" />
                       </button>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center gap-2 text-brand-accent/90 text-sm font-bold bg-brand-accent/10 py-2 px-4 rounded-full w-fit mx-auto border border-brand-accent/20">
+                      <CheckCircle2 className="w-4 h-4" />
+                      100% Satisfaction Guarantee
                     </div>
                   </motion.div>
                 )}
