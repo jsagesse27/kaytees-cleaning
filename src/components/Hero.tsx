@@ -5,7 +5,7 @@ import { CONTACT } from '../constants';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-32 overflow-hidden bg-brand-dark">
+    <section className="relative min-h-screen flex items-center pt-32 md:pt-20 pb-32 overflow-hidden bg-brand-dark">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -36,7 +36,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8">
+          <h1 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] mb-8">
             The Clean You Expect. <br />
             <span className="text-brand-accent italic">The Reliability You Deserve.</span>
           </h1>
