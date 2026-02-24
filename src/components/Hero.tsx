@@ -5,7 +5,7 @@ import { CONTACT } from '../constants';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-32 md:pt-20 pb-32 overflow-hidden bg-brand-dark">
+    <section className="relative min-h-[100svh] flex items-center pt-[clamp(8rem,15vh,12rem)] pb-[clamp(4rem,10vh,8rem)] overflow-hidden bg-brand-dark">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -19,13 +19,13 @@ export default function Hero() {
       {/* Background Pattern/Glow */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/20 blur-[120px] z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(2rem,5vw,5rem)] items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-4 mb-[clamp(1.5rem,4vh,2.5rem)]">
             <div className="inline-flex items-center gap-2 bg-brand-accent/20 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold backdrop-blur-sm border border-brand-accent/30">
               <Star className="w-4 h-4 fill-current" />
               <span>NYC's Trusted Cleaning Partner</span>
@@ -36,16 +36,16 @@ export default function Hero() {
             </a>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] mb-8">
+          <h1 className="font-bold text-white leading-[1.1] mb-[clamp(1.5rem,4vh,2.5rem)] text-[clamp(2.5rem,5vw+1rem,4.5rem)]">
             The Clean You Expect. <br />
             <span className="text-brand-accent italic">The Reliability You Deserve.</span>
           </h1>
 
-          <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
+          <p className="text-slate-300 leading-relaxed max-w-xl mb-[clamp(2rem,5vh,3rem)] text-[clamp(1.125rem,2vw,1.25rem)]">
             Stop stressing about the mess. Get premium, fully-insured commercial and residential cleaning in NYC. Reclaim your time and space with our 100% Satisfaction Guarantee.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-[clamp(2rem,5vh,3rem)]">
             <Link
               to="/book"
               className="bg-brand-accent hover:bg-brand-accent/90 text-slate-900 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl shadow-brand-accent/30 flex items-center justify-center gap-2 group cursor-pointer"
@@ -137,7 +137,7 @@ export default function Hero() {
           <div className="absolute top-1/3 right-0 w-4 h-4 border-2 border-brand-accent/40 rounded-full z-20" />
 
           {/* Main Hero Image */}
-          <div className="relative z-10 rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-2xl aspect-[3/4] w-[85%]">
+          <div className="relative z-10 rounded-[clamp(1.5rem,3vw,3rem)] overflow-hidden border-4 border-white/10 shadow-2xl aspect-[3/4] w-full max-w-[clamp(280px,35vw,480px)] mx-auto">
             <img
               src="/hero-worker.png"
               alt="Professional Cleaning Staff"
