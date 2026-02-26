@@ -8,18 +8,13 @@ import Testimonials from '../components/Testimonials';
 import BookingCTA from '../components/BookingCTA';
 import TrustBadges from '../components/TrustBadges';
 import AboutSection from '../components/AboutSection';
-import { Shield, Sparkles, Heart, Zap, Award, ThumbsUp, Leaf, Clock8 } from 'lucide-react';
+import DiscountPopup from '../components/DiscountPopup';
+import { Shield, Sparkles, Heart, Zap, ThumbsUp, Clock8 } from 'lucide-react';
+import { FEATURES, PROBLEM_STATEMENT } from '../siteConfig';
+
+const iconMap = { Shield, Sparkles, Heart, Zap, ThumbsUp, Clock8 } as const;
 
 export default function Home() {
-  const features = [
-    { icon: Shield, title: "Fully Insured", desc: "Bonded and insured for your total protection and peace of mind." },
-    { icon: Sparkles, title: "Eco-Friendly", desc: "Non-toxic, green products safe for your employees and customers." },
-    { icon: Heart, title: "Vetted Pros", desc: "Rigorous background checks and professional training for every crew member." },
-    { icon: Zap, title: "Instant Booking", desc: "Book online in seconds with real-time availability and pricing." },
-    { icon: ThumbsUp, title: "Satisfaction", desc: "100% happiness guarantee on every single service visit." },
-    { icon: Clock8, title: "After-Hours", desc: "We work around your business hours so there's zero disruption, every time." }
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,6 +23,7 @@ export default function Home() {
       className="pt-0"
     >
       <Hero />
+      <DiscountPopup />
       <TrustBadges />
 
       {/* Problem Statement */}
@@ -39,11 +35,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-              Stop letting a messy space <span className="text-brand-primary">cost you Time and Peace of Mind.</span>
+              {PROBLEM_STATEMENT.headline} <span className="text-brand-primary">{PROBLEM_STATEMENT.headlineAccent}</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-600 mb-10">
-              Whether it's an office that fails to impress clients, or a home that feels like a second job, dirt and clutter drain your energy.
-              It's time to hand the scrubbing over to the professionals. We deliver meticulous, reliable cleaning so you can finally relax and focus on what truly matters.
+              {PROBLEM_STATEMENT.body}
             </p>
           </motion.div>
         </div>
@@ -53,22 +48,25 @@ export default function Home() {
       <section id="about" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {features.map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center text-center p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand-primary/20 group cursor-pointer"
-              >
-                <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
-                  <f.icon className="w-8 h-8" />
-                </div>
-                <h4 className="text-xl font-bold mb-3">{f.title}</h4>
-                <p className="text-slate-600 text-sm leading-relaxed">{f.desc}</p>
-              </motion.div>
-            ))}
+            {FEATURES.map((f, i) => {
+              const Icon = iconMap[f.icon];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex flex-col items-center text-center p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand-primary/20 group cursor-pointer"
+                >
+                  <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <h4 className="text-xl font-bold mb-3">{f.title}</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">{f.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

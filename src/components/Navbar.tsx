@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Calendar } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import { COMPANY, IMAGES } from '../siteConfig';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,12 +34,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Kaytee's Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+          <img src={IMAGES.logo} alt={`${COMPANY.name} Logo`} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
           <span className={cn(
             "font-serif text-lg md:text-2xl font-bold tracking-tight",
             isScrolled ? "text-slate-900" : "text-white"
           )}>
-            Kaytee's Cleaning Service
+            {COMPANY.name}
           </span>
         </Link>
 

@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Star, ShieldCheck, Clock, PhoneCall, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { CONTACT } from '../constants';
+import { CONTACT, COMPANY, IMAGES, HERO, STATS } from '../siteConfig';
 
 export default function Hero() {
   return (
@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-bg.png"
+          src={IMAGES.heroBg}
           alt="Professional Cleaning Crew in Office"
           className="w-full h-full object-cover"
         />
@@ -28,7 +28,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 mb-[clamp(1.5rem,4vh,2.5rem)]">
             <div className="inline-flex items-center gap-2 bg-brand-accent/20 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold backdrop-blur-sm border border-brand-accent/30">
               <Star className="w-4 h-4 fill-current" />
-              <span>NYC's Trusted Cleaning Partner</span>
+              <span>{COMPANY.tagline}</span>
             </div>
             <a href={`tel:${CONTACT.phone.replace(/\D/g, '')}`} className="inline-flex items-center gap-2 bg-white/10 text-white hover:bg-white/20 px-4 py-1.5 rounded-full text-sm font-bold backdrop-blur-sm border border-white/20 transition-colors">
               <PhoneCall className="w-4 h-4" />
@@ -37,12 +37,12 @@ export default function Hero() {
           </div>
 
           <h1 className="font-bold text-white leading-[1.1] mb-[clamp(1.5rem,4vh,2.5rem)] text-[clamp(2.5rem,5vw+1rem,4.5rem)]">
-            The Clean You Expect. <br />
-            <span className="text-brand-accent italic">The Reliability You Deserve.</span>
+            {HERO.headline} <br />
+            <span className="text-brand-accent italic">{HERO.headlineAccent}</span>
           </h1>
 
           <p className="text-slate-300 leading-relaxed max-w-xl mb-[clamp(2rem,5vh,3rem)] text-[clamp(1.125rem,2vw,1.25rem)]">
-            Stop stressing about the mess. Get premium, fully-insured commercial and residential cleaning in NYC. Reclaim your time and space with our 100% Satisfaction Guarantee.
+            {HERO.subheadline}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-[clamp(2rem,5vh,3rem)]">
@@ -50,30 +50,30 @@ export default function Hero() {
               to="/book"
               className="bg-brand-accent hover:bg-brand-accent/90 text-slate-900 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl shadow-brand-accent/30 flex items-center justify-center gap-2 group cursor-pointer"
             >
-              Get a Free Quote
+              {HERO.ctaPrimary}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
               href="#services"
               className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-8 py-4 rounded-full text-lg font-bold transition-all border border-white/30 flex items-center justify-center cursor-pointer"
             >
-              View Our Services
+              {HERO.ctaSecondary}
             </a>
           </div>
 
           {/* Social Proof Badges */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-white/10 pt-8">
             <div className="flex flex-col">
-              <span className="text-3xl font-bold text-white">500+</span>
-              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">Clients Served</span>
+              <span className="text-3xl font-bold text-white">{STATS.clientsServed}</span>
+              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">{STATS.clientsServedLabel}</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-3xl font-bold text-white">4.9/5</span>
-              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">Google Rating</span>
+              <span className="text-3xl font-bold text-white">{STATS.googleRating}</span>
+              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">{STATS.googleRatingLabel}</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-3xl font-bold text-white">100%</span>
-              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">Satisfaction</span>
+              <span className="text-3xl font-bold text-white">{STATS.satisfaction}</span>
+              <span className="text-xs text-brand-accent uppercase tracking-wider font-semibold">{STATS.satisfactionLabel}</span>
             </div>
           </div>
         </motion.div>
@@ -85,49 +85,24 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative hidden lg:flex items-center justify-center"
         >
-          {/* Decorative Blob Shapes — Super Cleaners style */}
+          {/* Decorative Blob Shapes */}
           <div className="absolute inset-0 -m-8">
-            {/* Main large blob */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[90%] bg-brand-primary/40 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] blur-sm"
-            />
-            {/* Secondary blob */}
-            <div
-              className="absolute top-[10%] right-[5%] w-[85%] h-[80%] bg-brand-primary/30 rounded-[40%_60%_70%_30%/40%_70%_30%_60%] blur-sm"
-            />
-            {/* Accent blob */}
-            <div
-              className="absolute bottom-[5%] left-[10%] w-[70%] h-[60%] bg-brand-accent/15 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] blur-md"
-            />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[90%] bg-brand-primary/40 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] blur-sm" />
+            <div className="absolute top-[10%] right-[5%] w-[85%] h-[80%] bg-brand-primary/30 rounded-[40%_60%_70%_30%/40%_70%_30%_60%] blur-sm" />
+            <div className="absolute bottom-[5%] left-[10%] w-[70%] h-[60%] bg-brand-accent/15 rounded-[50%_50%_40%_60%/60%_40%_50%_50%] blur-md" />
           </div>
 
           {/* Decorative Sparkle Elements */}
-          <motion.div
-            animate={{ y: [-5, 5, -5] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-4 right-8 z-20"
-          >
+          <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-4 right-8 z-20">
             <Sparkles className="w-8 h-8 text-brand-accent drop-shadow-lg" />
           </motion.div>
-          <motion.div
-            animate={{ y: [5, -5, 5] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-16 left-0 z-20"
-          >
+          <motion.div animate={{ y: [5, -5, 5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 left-0 z-20">
             <Sparkles className="w-6 h-6 text-brand-accent/70 drop-shadow-lg" />
           </motion.div>
-          <motion.div
-            animate={{ y: [-5, 5, -5] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 -left-4 z-20"
-          >
+          <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} className="absolute top-1/4 -left-4 z-20">
             <div className="w-4 h-4 bg-brand-accent/50 rounded-full blur-[2px]" />
           </motion.div>
-          <motion.div
-            animate={{ y: [5, -5, 5] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-1/4 -right-2 z-20"
-          >
+          <motion.div animate={{ y: [5, -5, 5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-1/4 -right-2 z-20">
             <div className="w-3 h-3 bg-white/40 rounded-full blur-[1px]" />
           </motion.div>
 
@@ -139,7 +114,7 @@ export default function Hero() {
           {/* Main Hero Image */}
           <div className="relative z-10 rounded-[clamp(1.5rem,3vw,3rem)] overflow-hidden border-4 border-white/10 shadow-2xl aspect-[3/4] w-full max-w-[clamp(280px,35vw,480px)] mx-auto">
             <img
-              src="/hero-worker.png"
+              src={IMAGES.heroWorker}
               alt="Professional Cleaning Staff"
               className="w-full h-full object-cover"
             />
@@ -156,8 +131,8 @@ export default function Hero() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <p className="font-bold text-slate-900 text-sm">Fully Insured</p>
-              <p className="text-xs text-slate-500">Bonded & Protected</p>
+              <p className="font-bold text-slate-900 text-sm">{HERO.trustCards[0].title}</p>
+              <p className="text-xs text-slate-500">{HERO.trustCards[0].subtitle}</p>
             </div>
           </motion.div>
 
@@ -171,8 +146,8 @@ export default function Hero() {
               <Clock className="w-6 h-6" />
             </div>
             <div>
-              <p className="font-bold text-slate-900 text-sm">After-Hours Service</p>
-              <p className="text-xs text-slate-500">Zero Business Disruption</p>
+              <p className="font-bold text-slate-900 text-sm">{HERO.trustCards[1].title}</p>
+              <p className="text-xs text-slate-500">{HERO.trustCards[1].subtitle}</p>
             </div>
           </motion.div>
         </motion.div>

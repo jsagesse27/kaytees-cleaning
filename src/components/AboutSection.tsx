@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Heart, ArrowRight } from 'lucide-react';
+import { ABOUT_SNIPPET, IMAGES } from '../siteConfig';
 
 export default function AboutSection() {
     return (
@@ -17,8 +18,8 @@ export default function AboutSection() {
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                             <img
-                                src="/about-mother.png"
-                                alt="Our founder caring for a client's home"
+                                src={IMAGES.aboutFounder}
+                                alt="Keely, our founder and inspiration"
                                 className="w-full h-[400px] lg:h-[500px] object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -41,22 +42,22 @@ export default function AboutSection() {
                         </div>
 
                         <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                            Built on Love, <br />
-                            <span className="text-brand-accent italic">Driven by Legacy.</span>
+                            {ABOUT_SNIPPET.headline} <br />
+                            <span className="text-brand-accent italic">{ABOUT_SNIPPET.headlineAccent}</span>
                         </h3>
 
                         <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-                            Kaytee's Cleaning Service was born from a mother's lifelong commitment to treating every client's space as sacred. She didn't just clean homes and offices. She created sanctuaries where families could breathe and businesses could thrive.
+                            {ABOUT_SNIPPET.paragraph1}
                         </p>
                         <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                            After we lost her, we chose to carry her legacy forward. Today, every detail we get right and every promise we keep honors the standard she set.
+                            {ABOUT_SNIPPET.paragraph2}
                         </p>
 
                         <Link
                             to="/about"
                             className="inline-flex items-center gap-3 bg-brand-primary text-white px-8 py-4 rounded-2xl font-bold text-lg group hover:-translate-y-0.5 transition-transform"
                         >
-                            Read Her Story
+                            {ABOUT_SNIPPET.ctaText}
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>

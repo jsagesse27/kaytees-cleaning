@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, Sparkles, Phone } from 'lucide-react';
-import { CONTACT } from '../constants';
+import { CONTACT, BOOKING_CTA } from '../siteConfig';
 
 export default function BookingCTA() {
   return (
@@ -18,18 +18,20 @@ export default function BookingCTA() {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl" />
 
           <div className="relative z-10 max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-bold mb-8 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-brand-accent" />
-              <span>Limited Time: 20% Off Your First Deep Clean (Ends This Week)</span>
-            </div>
+            {BOOKING_CTA.promoBanner && (
+              <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-bold mb-8 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-brand-accent" />
+                <span>{BOOKING_CTA.promoBanner}</span>
+              </div>
+            )}
 
             <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-              What Would You Do With <br />
-              <span className="text-brand-accent italic">a Spotless Space?</span>
+              {BOOKING_CTA.headline} <br />
+              <span className="text-brand-accent italic">{BOOKING_CTA.headlineAccent}</span>
             </h2>
 
             <p className="text-xl text-white/80 mb-12 leading-relaxed">
-              Whether it's your office, storefront, or home, stop stressing about the mess. Get a custom quote in under 60 seconds and let us handle the rest.
+              {BOOKING_CTA.body}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -38,7 +40,7 @@ export default function BookingCTA() {
                 className="bg-brand-accent hover:bg-brand-accent/90 text-slate-900 px-10 py-5 rounded-full text-xl font-bold transition-transform shadow-xl flex items-center justify-center gap-3 group hover:-translate-y-1 cursor-pointer"
               >
                 <Calendar className="w-6 h-6" />
-                Book Your Appointment
+                {BOOKING_CTA.ctaText}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
@@ -51,7 +53,7 @@ export default function BookingCTA() {
             </div>
 
             <p className="mt-12 text-sm text-white/60 font-medium">
-              No long-term contracts • Fully insured • 100% Satisfaction Guarantee
+              {BOOKING_CTA.trustLine}
             </p>
           </div>
         </motion.div>

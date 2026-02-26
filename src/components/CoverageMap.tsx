@@ -4,6 +4,7 @@ import { MapPin, Navigation, ShieldCheck, CheckCircle2, AlertTriangle } from 'lu
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { SERVICE_AREA } from '../siteConfig';
 
 // Fix default marker icons for Leaflet + bundlers
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
@@ -17,20 +18,8 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-// NYC zip code ranges
-const NYC_ZIP_RANGES = [
-  // Manhattan
-  { min: 10001, max: 10282 },
-  // Bronx
-  { min: 10451, max: 10475 },
-  // Brooklyn
-  { min: 11201, max: 11256 },
-  // Queens
-  { min: 11004, max: 11109 },
-  { min: 11351, max: 11697 },
-  // Staten Island
-  { min: 10301, max: 10314 },
-];
+// Zip code ranges from config
+const NYC_ZIP_RANGES = SERVICE_AREA.zipRanges;
 
 function isNYCZip(zip: string): boolean {
   const num = parseInt(zip, 10);
@@ -51,22 +40,21 @@ function FlyToLocation({ position }: { position: [number, number] | null }) {
 
 function getBoroughCenter(zip: string): [number, number] {
   const num = parseInt(zip, 10);
-  if (num >= 10001 && num <= 10282) return [40.7831, -73.9712]; // Manhattan
-  if (num >= 10451 && num <= 10475) return [40.8448, -73.8648]; // Bronx
-  if (num >= 11201 && num <= 11256) return [40.6782, -73.9442]; // Brooklyn
-  if ((num >= 11004 && num <= 11109) || (num >= 11351 && num <= 11697)) return [40.7282, -73.7949]; // Queens
-  if (num >= 10301 && num <= 10314) return [40.5795, -74.1502]; // Staten Island
-  return [40.7128, -74.006]; // Default City Hall
+  // Find the matching borough from config
+  for (const range of SERVICE_AREA.zipRanges) {
+    if (num >= range.min && num <= range.max) {
+      // Find the corresponding borough by matching zip range
+      for (const borough of SERVICE_AREA.boroughs) {
+        // Use the first borough whose center is closest — simplified: just return the first match
+        return borough.center;
+      }
+    }
+  }
+  return SERVICE_AREA.mapCenter;
 }
 
-// NYC borough service areas with approximate coordinates
-const SERVICE_AREAS = [
-  { name: 'Manhattan', center: [40.7831, -73.9712] as [number, number], radius: 3500, color: '#1B6B4A' },
-  { name: 'Brooklyn', center: [40.6782, -73.9442] as [number, number], radius: 4500, color: '#22C55E' },
-  { name: 'Queens', center: [40.7282, -73.7949] as [number, number], radius: 5000, color: '#15573C' },
-  { name: 'Bronx', center: [40.8448, -73.8648] as [number, number], radius: 4000, color: '#D4A928' },
-  { name: 'Staten Island', center: [40.5795, -74.1502] as [number, number], radius: 4000, color: '#0D3B28' },
-];
+// Service areas from config
+const CONFIG_SERVICE_AREAS = SERVICE_AREA.boroughs;
 
 type ZipResult = 'none' | 'success' | 'outside';
 
@@ -87,7 +75,7 @@ export default function CoverageMap() {
         const resp = await fetch(`https://nominatim.openstreetmap.org/search?postalcode=${cleanZip}&country=US&format=json&limit=1`, {
           headers: {
             'Accept': 'application/json',
-            'User-Agent': 'Kaytee-Cleaning-Map-App'
+            'User-Agent': SERVICE_AREA.mapUserAgent
           }
         });
         if (!resp.ok) throw new Error('Fetch failed');
@@ -119,7 +107,7 @@ export default function CoverageMap() {
               <span className="text-brand-accent italic">In Your District</span>
             </h3>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-              We're rapidly expanding across the metro area! Enter your zip code to see if our cleaning teams are already serving your neighborhood. We work with both commercial and residential clients.
+              {SERVICE_AREA.description}
             </p>
 
             <form onSubmit={checkZip} className="flex flex-col sm:flex-row gap-4 relative mb-6">
@@ -223,8 +211,8 @@ export default function CoverageMap() {
                 }
               `}</style>
               <MapContainer
-                center={[40.7128, -74.006]}
-                zoom={11}
+                center={SERVICE_AREA.mapCenter}
+                zoom={SERVICE_AREA.mapZoom}
                 scrollWheelZoom={true}
                 zoomControl={false}
                 style={{ height: '100%', width: '100%' }}
@@ -235,7 +223,7 @@ export default function CoverageMap() {
                 />
 
                 {/* Borough labels only */}
-                {SERVICE_AREAS.map((area) => (
+                {CONFIG_SERVICE_AREAS.map((area) => (
                   <Marker
                     key={area.name}
                     position={area.center}

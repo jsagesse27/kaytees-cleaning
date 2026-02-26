@@ -6,48 +6,62 @@
  * ANTI-REPEAT SYSTEM: Every intent has multiple response variants. A response
  * history tracks recent outputs and guarantees the bot never sends the same
  * message twice, even if the user triggers the same intent repeatedly.
+ *
+ * ALL business-specific data is sourced from siteConfig.ts via the K object.
  */
+import {
+    COMPANY,
+    CONTACT,
+    SERVICES,
+    RECURRING_PLANS,
+    OPERATIONS,
+    SERVICE_AREA,
+    BRAND_STORY,
+} from '../siteConfig';
 
-// ─── Knowledge Base ────────────────────────────────────────────
+// ─── Knowledge Base (derived from siteConfig) ────────────────────────
 const K = {
     services: {
         commercial: {
-            name: 'Commercial Cleaning',
-            price: 'Custom Quote',
+            name: SERVICES.find((s) => s.id === 'commercial')!.title,
+            price: SERVICES.find((s) => s.id === 'commercial')!.price,
             desc: 'Offices, retail spaces, corporate buildings. We work around your schedule for zero disruption.',
-            features: ['Office Sanitization', 'Floor Maintenance', 'Window Cleaning', 'Waste Management'],
+            features: SERVICES.find((s) => s.id === 'commercial')!.features,
         },
         facility: {
-            name: 'Facility Maintenance',
-            price: 'Custom Quote',
+            name: SERVICES.find((s) => s.id === 'facility')!.title,
+            price: SERVICES.find((s) => s.id === 'facility')!.price,
             desc: 'Warehouses, gyms, medical offices, large venues. Industrial-grade equipment and trained personnel.',
-            features: ['Industrial Floor Care', 'High-Ceiling Dusting', 'Loading Area Wash', 'Restroom Deep Clean'],
+            features: SERVICES.find((s) => s.id === 'facility')!.features,
         },
         deep: {
-            name: 'Deep Cleaning',
-            price: 'From $250',
+            name: SERVICES.find((s) => s.id === 'deep-clean')!.title,
+            price: SERVICES.find((s) => s.id === 'deep-clean')!.price,
             desc: 'Top-to-bottom scrub for spaces that need extra attention. Behind equipment, break rooms, ventilation grilles.',
-            features: ['Inside Appliances', 'Baseboard Scrubbing', 'Wall Washing', 'Grout Cleaning'],
+            features: SERVICES.find((s) => s.id === 'deep-clean')!.features,
         },
         residential: {
-            name: 'Residential Cleaning',
-            price: 'From $120',
+            name: SERVICES.find((s) => s.id === 'residential')!.title,
+            price: SERVICES.find((s) => s.id === 'residential')!.price,
             desc: 'Detail-oriented cleaning for your home. Dusting, vacuuming, kitchen and bathroom deep cleaning.',
-            features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean'],
+            features: SERVICES.find((s) => s.id === 'residential')!.features,
         },
     },
     plans: {
-        weekly: { name: 'Weekly Maintenance', price: '$199/visit', discount: '15% savings' },
-        biweekly: { name: 'Bi-Weekly Professional', price: '$299/visit', discount: '10% savings', popular: true },
-        monthly: { name: 'Monthly Deep Service', price: '$499/visit', features: 'Full dusting, floor polishing, window tracks' },
+        weekly: { name: RECURRING_PLANS[0].name, price: `$${RECURRING_PLANS[0].price}/visit`, discount: '15% savings' },
+        biweekly: { name: RECURRING_PLANS[1].name, price: `$${RECURRING_PLANS[1].price}/visit`, discount: '10% savings', popular: true },
+        monthly: { name: RECURRING_PLANS[2].name, price: `$${RECURRING_PLANS[2].price}/visit`, features: 'Full dusting, floor polishing, window tracks' },
     },
-    contact: { phone: '(555) 123-4567', email: 'hello@kayteescleaning.com', address: '123 Sparkle Way, Clean City, ST 12345' },
-    hours: 'Monday through Saturday, 8 AM to 7 PM. We also offer after-hours cleaning for commercial clients.',
-    area: 'We serve all five NYC boroughs: Manhattan, Brooklyn, Queens, the Bronx, and Staten Island.',
-    guarantee: "100% satisfaction guarantee. If you're not completely happy, we'll return within 24 hours to make it right at no extra charge.",
-    trust: 'Every team member is background-checked, and we are fully licensed and insured. For recurring clients, you get the same team every visit.',
-    products: 'We use eco-friendly, non-toxic cleaning products that are safe for children, pets, and the environment.',
-    cancellation: 'You can reschedule or cancel with 24 hours notice at no charge.',
+    contact: { phone: CONTACT.phone, email: CONTACT.email, address: CONTACT.address },
+    hours: OPERATIONS.hours,
+    area: SERVICE_AREA.areaText,
+    guarantee: OPERATIONS.guarantee,
+    trust: OPERATIONS.trust,
+    products: OPERATIONS.products,
+    cancellation: OPERATIONS.cancellation,
+    companyName: COMPANY.name,
+    shortName: COMPANY.shortName,
+    founderStory: BRAND_STORY.originalCompanyName,
 };
 
 // ─── Anti-Repeat System ───────────────────────────────────────
@@ -75,10 +89,10 @@ const intents: Intent[] = [
     {
         patterns: [/^(hi|hey|hello|yo|sup|good (morning|afternoon|evening))/i, /^(what'?s up|howdy)/i],
         variants: [
-            () => "Hey there! Welcome to Kaytee's Cleaning Service. Are you looking for help with a home or a business space?",
-            () => "Hi! Thanks for reaching out. Are you interested in residential or commercial cleaning today?",
-            () => "Hello! I'm here to help you find the perfect cleaning solution. What kind of space are we talking about?",
-            () => "Welcome! So glad you reached out. Tell me — is this for a home, an office, or something else entirely?",
+            () => `Hey there! Welcome to ${K.companyName}. Are you looking for help with a home or a business space?`,
+            () => `Hi! Thanks for reaching out. Are you interested in residential or commercial cleaning today?`,
+            () => `Hello! I'm here to help you find the perfect cleaning solution. What kind of space are we talking about?`,
+            () => `Welcome! So glad you reached out. Tell me — is this for a home, an office, or something else entirely?`,
         ],
     },
 
@@ -119,7 +133,7 @@ const intents: Intent[] = [
                 `Pricing starts at ${K.services.residential.price} and depends on size and frequency. Would you like to try our instant quote calculator? It takes about 60 seconds.`,
             () =>
                 `Home cleaning is what we're known for. We put the same care into your space that we'd put into our own family's home. Starts at ${K.services.residential.price}.\n\n` +
-                `What part of NYC are you located in? That helps me check our availability for your area.`,
+                `What area are you located in? That helps me check our availability.`,
         ],
     },
 
@@ -138,7 +152,7 @@ const intents: Intent[] = [
                 `Absolutely! We clean all types of commercial spaces. Whether it's a small office or a multi-floor corporate building, we've got the team and equipment for it.\n\n` +
                 `A lot of our commercial clients go with our bi-weekly plan at ${K.plans.biweekly.price} with ${K.plans.biweekly.discount}. Want me to walk you through the options?`,
             () =>
-                `We work with businesses across all five boroughs. From boutique retail to large corporate offices — we tailor every plan to your needs.\n\n` +
+                `We work with businesses across our entire service area. From boutique retail to large corporate offices — we tailor every plan to your needs.\n\n` +
                 `What's most important to you in a cleaning service? Flexibility, consistency, specific areas of focus?`,
         ],
     },
@@ -167,7 +181,7 @@ const intents: Intent[] = [
                 `Facility maintenance is one of our specialties! We handle ${K.services.facility.desc}\n\n` +
                 `${K.services.facility.features.join(', ')} — you name it, we've got you covered.\n\nHow large is the space, roughly?`,
             () =>
-                `We work with some of the biggest facilities in NYC. Industrial floors, high ceilings, restrooms — we bring the right equipment and crew for the job.\n\n` +
+                `We work with some of the biggest facilities in our area. Industrial floors, high ceilings, restrooms — we bring the right equipment and crew for the job.\n\n` +
                 `What type of facility are we talking about? That helps me scope out what you'd need.`,
             () =>
                 `Large spaces are no problem for us. We've cleaned everything from gyms to convention centers. Pricing is custom-quoted based on your square footage and needs.\n\n` +
@@ -242,7 +256,7 @@ const intents: Intent[] = [
         patterns: [/area|location|where|borough|manhattan|brooklyn|queens|bronx|staten/i, /do you (serve|cover|come to)/i, /zip/i],
         variants: [
             () => `${K.area}\n\nYou can check your exact zip code using the coverage checker further down this page.`,
-            () => `We cover all of NYC — ${K.area}\n\nWhat neighborhood are you in? I can confirm we service your area.`,
+            () => `We cover our entire service area — ${K.area}\n\nWhat neighborhood are you in? I can confirm we service your area.`,
         ],
     },
 
@@ -251,7 +265,7 @@ const intents: Intent[] = [
         patterns: [/trust|safe|insur|licens|background|vet|bond|reliable|legit/i],
         variants: [
             () => `That's a great question, and I totally understand wanting to know. ${K.trust}\n\nYour peace of mind matters to us. That's also why we offer a ${K.guarantee}`,
-            () => `Safety and trust are non-negotiable for us. ${K.trust}\n\nOur mother built this business on accountability, and we carry that forward every day.`,
+            () => `Safety and trust are non-negotiable for us. ${K.trust}\n\nThis business was built on accountability, and we carry that forward every day.`,
             () => `We take trust seriously. Every single team member goes through rigorous background checks. We're fully licensed and insured, and for recurring clients, you always get the same familiar team.\n\nWant to learn more about our process?`,
         ],
     },
@@ -269,7 +283,7 @@ const intents: Intent[] = [
     {
         patterns: [/guarantee|satisfaction|not happy|complaint|refund|redo/i],
         variants: [
-            () => `${K.guarantee}\n\nOur mother built this business on integrity. That principle hasn't changed.`,
+            () => `${K.guarantee}\n\nOur business was built on integrity. That principle hasn't changed.`,
             () => `We stand behind every single job. ${K.guarantee}\n\nPut simply: if you're not thrilled, we make it right. No questions asked.`,
         ],
     },
@@ -288,10 +302,10 @@ const intents: Intent[] = [
         patterns: [/about|story|history|who are you|your company|family|mother|founder/i],
         variants: [
             () =>
-                `Kaytee's Cleaning Service is a family-run business born from our mother's lifelong dedication to treating every client's space as sacred.\n\n` +
-                `After we lost her, we chose to carry her legacy forward. You can read the full story on our About page.\n\nAnything specific I can help with?`,
+                `${K.companyName} is a family-run business born from a lifelong dedication to treating every client's space as sacred.\n\n` +
+                `You can read the full story on our About page.\n\nAnything specific I can help with?`,
             () =>
-                `We started as Keely's Cleaning Services — our mother's business. She believed cleaning was more than a job; it was an act of care. When she passed, we relaunched as Kaytee's to honor her standard.\n\n` +
+                `We started as ${K.founderStory}. Over time, we grew and relaunched as ${K.companyName} to honor the standards that built this business.\n\n` +
                 `Check out our About page for the full story. It's a powerful read.`,
         ],
     },

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
-import { CONTACT } from '../constants';
+import { CONTACT, COMPANY, SOCIAL, IMAGES, SERVICES } from '../siteConfig';
 
 export default function Footer() {
   return (
@@ -8,16 +8,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         <div className="col-span-1 md:col-span-1">
           <Link to="/" className="flex items-center gap-2 mb-6">
-            <img src="/logo.png" alt="Kaytee's Cleaning Service Logo" className="w-10 h-10 object-contain" />
-            <span className="font-serif text-2xl font-bold text-white">Kaytee's Cleaning Service</span>
+            <img src={IMAGES.logo} alt={`${COMPANY.name} Logo`} className="w-10 h-10 object-contain" />
+            <span className="font-serif text-2xl font-bold text-white">{COMPANY.name}</span>
           </Link>
           <p className="text-sm leading-relaxed mb-6">
-            Premium cleaning services for offices, facilities, and homes. We deliver spotless results and total peace of mind, commercial or residential.
+            {COMPANY.description}
           </p>
           <div className="flex gap-4">
-            <a href="#" aria-label="Facebook" className="hover:text-brand-accent transition-colors cursor-pointer"><Facebook className="w-5 h-5" /></a>
-            <a href="#" aria-label="Instagram" className="hover:text-brand-accent transition-colors cursor-pointer"><Instagram className="w-5 h-5" /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-brand-accent transition-colors cursor-pointer"><Twitter className="w-5 h-5" /></a>
+            <a href={SOCIAL.facebook} aria-label="Facebook" className="hover:text-brand-accent transition-colors cursor-pointer"><Facebook className="w-5 h-5" /></a>
+            <a href={SOCIAL.instagram} aria-label="Instagram" className="hover:text-brand-accent transition-colors cursor-pointer"><Instagram className="w-5 h-5" /></a>
+            <a href={SOCIAL.twitter} aria-label="Twitter" className="hover:text-brand-accent transition-colors cursor-pointer"><Twitter className="w-5 h-5" /></a>
           </div>
         </div>
 
@@ -34,10 +34,13 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-bold mb-6">Services</h4>
           <ul className="space-y-4 text-sm">
-            <li><Link to="/services/commercial" className="hover:text-white transition-colors cursor-pointer">Commercial Cleaning</Link></li>
-            <li><Link to="/services/facility" className="hover:text-white transition-colors cursor-pointer">Facility Maintenance</Link></li>
-            <li><Link to="/services/deep-clean" className="hover:text-white transition-colors cursor-pointer">Deep Cleaning</Link></li>
-            <li><Link to="/services/residential" className="hover:text-white transition-colors cursor-pointer">Residential Cleaning</Link></li>
+            {SERVICES.map((s) => (
+              <li key={s.id}>
+                <Link to={`/services/${s.id}`} className="hover:text-white transition-colors cursor-pointer">
+                  {s.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -61,7 +64,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-brand-primary/20 flex flex-col sm:grid-cols-2 md:flex-row justify-between items-center gap-4 text-xs">
-        <p>© {new Date().getFullYear()} Kaytee's Cleaning Service. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-white cursor-pointer">Privacy Policy</a>
           <a href="#" className="hover:text-white cursor-pointer">Terms of Service</a>

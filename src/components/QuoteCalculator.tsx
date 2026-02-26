@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Home, Bath, Square, Sparkles, Calculator, ArrowRight, Building2, Droplets, CheckCircle2, User, Mail, Phone, MapPin, Calendar, Clock, FileText, PartyPopper } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { PRICING, COMPANY } from '../siteConfig';
 
 type SpaceType = 'office' | 'home' | 'facility';
 type CleanType = 'standard' | 'deep' | 'move';
@@ -44,20 +45,16 @@ export default function QuoteCalculator() {
     setBubbles(newBubbles);
   }, []);
 
-  // Calculate price
+  // Calculate price from siteConfig rates
   useEffect(() => {
     let base = 0;
-    const sqftRate = spaceType === 'facility' ? 0.12 : spaceType === 'office' ? 0.1 : 0.08;
+    const sqftRate = PRICING.sqftRates[spaceType === 'office' ? 'office' : spaceType === 'home' ? 'home' : 'facility'];
     base += sqft * sqftRate;
-    base += rooms * 15;
-    base += bathrooms * 25;
+    base += rooms * PRICING.roomRate;
+    base += bathrooms * PRICING.bathroomRate;
 
-    if (cleanType === 'deep') base *= 1.5;
-    if (cleanType === 'move') base *= 1.8;
-
-    if (frequency === 'weekly') base *= 0.75;
-    else if (frequency === 'bi-weekly') base *= 0.85;
-    else if (frequency === 'monthly') base *= 0.9;
+    base *= PRICING.multipliers[cleanType];
+    base *= PRICING.discounts[frequency];
 
     setTotal(Math.round(base));
   }, [rooms, bathrooms, sqft, spaceType, cleanType, frequency]);
@@ -557,7 +554,7 @@ export default function QuoteCalculator() {
                     <div>
                       <h4 className="text-white font-bold text-2xl mb-2">You're All Set!</h4>
                       <p className="text-slate-400 text-sm leading-relaxed">
-                        Thank you, {fullName.split(' ')[0]}! A Kaytee's representative will reach out within 24 hours to confirm your cleaning and finalize the details.
+                        Thank you, {fullName.split(' ')[0]}! A {COMPANY.shortName} representative will reach out within 24 hours to confirm your cleaning and finalize the details.
                       </p>
                     </div>
 

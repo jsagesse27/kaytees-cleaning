@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, X, Send, Sparkles, DollarSign, Brush, MapPin } from 'lucide-react';
 import { getBotResponse, resetChat } from '../lib/chatEngine';
+import { CHATBOT } from '../siteConfig';
 
 interface Message {
     id: number;
@@ -15,7 +16,7 @@ const QUICK_CHIPS = [
     { label: 'Check Availability', msg: 'Do you serve my area?', icon: MapPin },
 ];
 
-const GREETING = "Hi! Welcome to Kaytee's Cleaning Service. I'm here to help you find the perfect cleaning solution. What can I help you with today?";
+const GREETING = CHATBOT.greeting;
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
@@ -128,7 +129,7 @@ export default function ChatWidget() {
                                 <Sparkles className="w-5 h-5" />
                             </div>
                             <div className="flex-1">
-                                <p className="font-bold text-sm">Kaytee's Assistant</p>
+                                <p className="font-bold text-sm">{CHATBOT.assistantName}</p>
                                 <p className="text-[11px] text-white/70">
                                     {isTyping ? 'Typing...' : 'Online'}
                                 </p>

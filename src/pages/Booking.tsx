@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SERVICES } from '../constants';
+import { COMPANY } from '../siteConfig';
 import { CheckCircle2, Calendar, Clock, User, Mail, Phone, MapPin, Sparkles, Shield } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -274,7 +275,7 @@ export default function Booking() {
               </div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Booking Confirmed!</h2>
               <p className="text-slate-600 mb-12 max-w-md mx-auto">
-                Thank you for choosing Kaytee's. We've sent a confirmation email to <span className="font-bold text-slate-900">{formData.email}</span> with all the details.
+                Thank you for choosing {COMPANY.shortName}. We've sent a confirmation email to <span className="font-bold text-slate-900">{formData.email}</span> with all the details.
               </p>
               <button
                 onClick={() => window.location.href = '/'}
