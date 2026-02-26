@@ -20,6 +20,22 @@ export default function About() {
         >
             {/* ─── Hero ──────────────────────────────────────────────── */}
             <section className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-24 bg-brand-dark overflow-hidden">
+                {/* ─── Faded Founder Image Background ─── */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.15 }}
+                    transition={{ duration: 2, delay: 0.5 }}
+                    className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+                    style={{
+                        backgroundImage: `url(${IMAGES.aboutFounder})`,
+                        backgroundPosition: 'center 20%',
+                        backgroundSize: 'cover',
+                        mixBlendMode: 'luminosity',
+                        maskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 95%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 95%)',
+                    }}
+                />
+
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-dark/50 to-brand-dark z-0" />
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/20 rounded-full blur-[120px] z-0" />
                 <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-brand-accent/10 rounded-full blur-[80px] z-0" />
@@ -154,8 +170,8 @@ export default function About() {
                                 <p
                                     key={i}
                                     className={`text-lg leading-relaxed ${i === 1
-                                            ? 'text-brand-primary font-bold text-xl'
-                                            : 'text-slate-600'
+                                        ? 'text-brand-primary font-bold text-xl'
+                                        : 'text-slate-600'
                                         }`}
                                 >
                                     {p}

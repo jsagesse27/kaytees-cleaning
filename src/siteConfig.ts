@@ -233,11 +233,9 @@ export const ABOUT_TESTIMONIALS = [
 export const TRUSTED_CLIENTS = {
     tagline: 'Trusted by 500+ NYC Businesses & Families',
     brands: [
-        { name: 'TechVault Inc.', icon: 'Building2' as const },
-        { name: 'GreenField Mall', icon: 'Sparkles' as const },
-        { name: 'Oasis Properties', icon: 'Home' as const },
-        { name: 'Downtown Wellness', icon: 'Star' as const },
-        { name: 'Skyline Capital', icon: 'Building2' as const },
+        { name: 'ALDER', icon: 'Building2' as const },
+        { name: 'eB', icon: 'Building2' as const },
+        { name: 'W Services Group', icon: 'Building2' as const },
     ],
 };
 
