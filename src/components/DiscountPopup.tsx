@@ -64,7 +64,7 @@ export default function DiscountPopup() {
 
                         <button
                             onClick={handleClose}
-                            className="absolute top-5 right-5 p-1.5 rounded-full bg-slate-100/50 text-slate-400 hover:bg-slate-200 hover:text-slate-900 transition-colors z-10"
+                            className="absolute top-5 right-5 p-1.5 rounded-full bg-slate-100/50 text-slate-400 hover:bg-slate-200 hover:text-slate-900 transition-colors z-20"
                         >
                             <X size={16} />
                         </button>
@@ -95,8 +95,8 @@ export default function DiscountPopup() {
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 className={`w-full px-5 py-3.5 rounded-2xl bg-slate-50 border text-sm transition-all text-slate-900 focus:outline-none focus:ring-2 ${error
-                                                        ? 'border-red-200 focus:ring-red-100'
-                                                        : 'border-slate-100 focus:ring-brand-primary/20 focus:border-brand-primary'
+                                                    ? 'border-red-200 focus:ring-red-100'
+                                                    : 'border-slate-100 focus:ring-brand-primary/20 focus:border-brand-primary'
                                                     }`}
                                             />
                                         </div>
